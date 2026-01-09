@@ -47,7 +47,7 @@ blog_project/
 ⚙️ Installation & Setup
 
 1️⃣ Clone the repository
-git clone https://github.com/your-username/blog-project.git
+git clone https://github.com/PrathameshNi/Personal_Blog_Project.git
 
 2️⃣ Navigate to project folder
 cd blog_project
