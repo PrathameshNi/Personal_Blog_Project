@@ -1,0 +1,57 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+
+<style>
+    body{
+        background: linear-gradient(135deg, #8796e7ff, rgba(2, 15, 59, 1));
+        
+    }
+    .post-card {
+        background: #18016dff;
+        padding: 15px;
+        margin: 20px auto;
+        width: 70%;
+        border-radius: 8px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .post-card h2 {
+        margin-bottom: 5px;
+    }
+
+    .post-card a {
+        text-decoration: none;
+        color: #99cafcff;
+    }
+
+    .post-card a:hover {
+        color: #007bff;
+    }
+
+    .likes {
+        font-size: 14px;
+        color: #fa3030ff;
+    }
+
+    .no-posts {
+        text-align: center;
+        font-size: 18px;
+        color: gray;
+    }
+</style>
+
+{% for post in posts %}
+    <div class="post-card">
+        <h2>
+            <a href="{% url 'post_detail' post.slug %}">
+                {{ post.title }}
+            </a>
+        </h2>
+        <p class="likes">❤️ Likes: {{ post.likes.count }}</p>
+    </div>
+{% empty %}
+    <p class="no-posts">No posts yet.</p>
+{% endfor %}
+
+{% endblock %}

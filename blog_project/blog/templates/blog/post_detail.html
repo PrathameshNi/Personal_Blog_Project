@@ -1,0 +1,27 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+<h2>{{ post.title }}</h2>
+<p>{{ post.content }}</p>
+
+{% if user.is_authenticated %}
+<a href="{% url 'like_post' post.slug %}">Like</a>
+{% endif %}
+
+<h3>Comments</h3>
+{% for comment in post.comments.all %}
+    <p><b>{{ comment.user }}</b>: {{ comment.text }}</p>
+{% empty %}
+    <p>No comments yet.</p>
+{% endfor %}
+
+{% if user.is_authenticated %}
+<form method="POST">
+    {% csrf_token %}
+    <textarea name="comment" required></textarea><br>
+    <button type="submit">Add Comment</button>
+</form>
+{% else %}
+<p>Please login to comment.</p>
+{% endif %}
+{% endblock %}
